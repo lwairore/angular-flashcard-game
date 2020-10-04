@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+
 import { IFlash } from './flash.model';
 import { FlashService } from './flash.service';
 
