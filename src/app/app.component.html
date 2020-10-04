@@ -4,7 +4,8 @@
       <label class="label" for="">Question</label>
       <div class="control">
           <input required class="input" type="text" 
-           name="question">
+           name="question" [ngModel]="flash.question" 
+           (keyup)="handleQuestionKeyup()">
       </div>
   </div>
   <div class="field">
