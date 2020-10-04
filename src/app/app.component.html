@@ -5,7 +5,10 @@
       <div class="control">
           <input required class="input" type="text" 
            name="question" [(ngModel)]="flash.question" 
-           >
+           #question="ngModel" 
+           [ngClass]="{
+             'is-danger': question.invalid && !question.pristine
+           }">
       </div>
   </div>
   <div class="field">
