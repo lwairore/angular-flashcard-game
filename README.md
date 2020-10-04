@@ -6,5 +6,5 @@ Angular Flashcard Game uses observables in Angular services, `FlashService`, to 
 
 
 ## Demo
-Here is a working live demo: [http://localhost:4200/](http://localhost:4200/)
+Here is a working live demo: [https://lwairore.github.io/angular-flashcard-game/](https://lwairore.github.io/angular-flashcard-game/)
 
