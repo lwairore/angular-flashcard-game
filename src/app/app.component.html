@@ -1,3 +1,24 @@
+<form>
+  <h1 class="is-size-3">Add New Flash Card</h1>
+  <div class="field">
+      <label class="label" for="">Question</label>
+      <div class="control">
+          <input required class="input" type="text" 
+           name="question">
+      </div>
+  </div>
+  <div class="field">
+      <label for="" class="label">Answer</label>
+      <div class="control">
+          <input required class="input" type="text" 
+           name="answer">
+      </div>
+  </div>
+  
+  <button class="button is-primary" type="submit">Submit</button>
+  <button class="button clear-btn">Clear</button>
+</form>
+
 <div class="flashs">
   <app-flash 
   *ngFor="let flash of flashs; trackBy: trackByFlashId" 
