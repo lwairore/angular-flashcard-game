@@ -47,6 +47,8 @@ export class AppComponent {
       
   }
 
+  flash: {question, answer};
+
   handleEdit(id: number) {
     this.editing = true;
     this.editingId = id;
