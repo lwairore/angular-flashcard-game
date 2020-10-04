@@ -54,19 +54,21 @@ export class AppComponent {
     const flashId = this.flashs.indexOf(
       this.flashs.find(flash => flash.id === id));
     this.flashs.splice(flashId, 1);
-   
-      
+
+
   }
 
-  flash: {question, answer};
+  flash: { question, answer };
 
   handleEdit(id: number) {
     this.editing = true;
     this.editingId = id;
-    // TODO: We will add editing logic after adding the form
+    const flash = this.flashs.find(flash => flash.id === id);
+    this.flash.question = flash.question;
+    this.flash.answer = flash.answer;
   }
 
-  handleRememberedChange({id, flag}) {
+  handleRememberedChange({ id, flag }) {
     const flash = this.flashs.find(flash => flash.id === id);
     flash.remembered = flag;
   };
@@ -85,6 +87,19 @@ export class AppComponent {
       answer: ''
     };
     this.flashForm.reset();
+  };
+
+  handleUpdate() {
+    const flash = this.flashs.find(flash => flash.id === this.editingId);
+    flash.question = this.flash.question;
+    flash.answer = this.flash.answer;
+    this.handleCancel();
+  };
+
+  handleCancel() {
+    this.editing = false;
+    this.editingId = undefined;
+    this.handleClear();
   }
-  
+
 }
