@@ -26,14 +26,16 @@ export class FlashService {
     show: false,
     id: getRandomNumber(),
   }];
-  flash: { question; answer; };
+  flash: { question, answer, show: boolean, id: number, remembered?: 'correct' | 'incorrect' };
 
   constructor() {
     this.flash = {
       question: '',
       answer: '',
-
-    }
+      show: null,
+      id: null,
+      remembered: null
+    };
   }
 
   addFlash(flash: IFlash) {
