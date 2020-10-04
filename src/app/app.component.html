@@ -1,11 +1,11 @@
-<form>
+<form #flashForm="ngForm">
   <h1 class="is-size-3">Add New Flash Card</h1>
   <div class="field">
       <label class="label" for="">Question</label>
       <div class="control">
           <input required class="input" type="text" 
            name="question" [(ngModel)]="flash.question" 
-           #question="ngModel" 
+           #question 
            [ngClass]="{
              'is-danger': question.invalid && !question.pristine
            }">
@@ -15,12 +15,17 @@
       <label for="" class="label">Answer</label>
       <div class="control">
           <input required class="input" type="text" 
-           name="answer">
+           name="answer" #answer [(ngModel)]="flash.answer"
+           [ngClass]="{
+             'is-danger': answer.invalid && !answer.pristine
+           }">
       </div>
   </div>
   
-  <button class="button is-primary" type="submit">Submit</button>
-  <button class="button clear-btn">Clear</button>
+  <button class="button is-primary" type="submit"
+  (click)="handleSubmit()">Submit</button>
+  <button class="button clear-btn"
+  (click)="handleClear()">Clear</button>
 </form>
 
 <div class="flashs">
