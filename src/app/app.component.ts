@@ -34,6 +34,13 @@ export class AppComponent {
   editing = false;
   editingId: number;
 
+  constructor() {
+    this.flash = {
+      question: '',
+      answer: ''
+    }
+  }
+
   trackByFlashId(index, flash) {
     return flash.id;
   };

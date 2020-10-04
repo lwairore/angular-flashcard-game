@@ -1,42 +1,37 @@
 <form #flashForm="ngForm">
-  <h1 class="is-size-3">Add New Flash Card</h1>
+  <h1 class="is-size-3"> {{ editing ? 'Update': 'Add New' }} Flash Card</h1>
   <div class="field">
-      <label class="label" for="">Question</label>
-      <div class="control">
-          <input required class="input" type="text" 
-           name="question" [(ngModel)]="flash.question" 
-           #question 
-           [ngClass]="{
+    <label class="label" for="">Question</label>
+    <div class="control">
+      <input required class="input" type="text" name="question" [(ngModel)]="flash.question" #question [ngClass]="{
              'is-danger': question.invalid && !question.pristine
            }">
-      </div>
+    </div>
   </div>
   <div class="field">
-      <label for="" class="label">Answer</label>
-      <div class="control">
-          <input required class="input" type="text" 
-           name="answer" #answer [(ngModel)]="flash.answer"
-           [ngClass]="{
+    <label for="" class="label">Answer</label>
+    <div class="control">
+      <input required class="input" type="text" name="answer" #answer [(ngModel)]="flash.answer" [ngClass]="{
              'is-danger': answer.invalid && !answer.pristine
            }">
-      </div>
+    </div>
   </div>
-  
-  <button class="button is-primary" type="submit"
-  (click)="handleSubmit()">Submit</button>
-  <button class="button clear-btn"
-  (click)="handleClear()">Clear</button>
+  <button *ngIf="editing; else submitBtn" class="button is-primary" type="submit"
+    (click)="handleUpdate()">Update</button>
+  <ng-template #submitBtn>
+    <button class="button is-primary" type="submit" (click)="handleSubmit()">Submit</button>
+  </ng-template>
+  <button *ngIf="editing; else clearBtn" class="button clear-btn" (click)="handleCancel()">Cancel</button>
+  <ng-template #clearBtn>
+    <button class="button clear-btn" (click)="handleClear()">Clear</button>
+  </ng-template>
+
 </form>
 
 <div class="flashs">
-  <app-flash 
-  *ngFor="let flash of flashs; trackBy: trackByFlashId" 
-  [flash]="flash"
-  (onToggleCard)="handleToggleCard($event)"
-  (onEdit)="handleEdit($event)"
-  (onDelete)="handleDelete($event)"
-  (onRememberedChange)="handleRememberedChange($event)"
-  ></app-flash>
+  <app-flash *ngFor="let flash of flashs; trackBy: trackByFlashId" [flash]="flash"
+    (onToggleCard)="handleToggleCard($event)" (onEdit)="handleEdit($event)" (onDelete)="handleDelete($event)"
+    (onRememberedChange)="handleRememberedChange($event)"></app-flash>
 </div>
 
 
