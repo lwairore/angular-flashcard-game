@@ -1,10 +1,10 @@
 import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { Subscription, Observable } from 'rxjs';
 
 import { IFlash } from './flash.model';
 import { FlashService } from './flash.service';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -14,13 +14,12 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('flashForm', { static: true }) flashForm: NgForm;
 
-  flashs: IFlash[];
+  flashs$: Observable<IFlash[]>;
   editing = false;
   editingId: number;
   subscription: Subscription
 
   constructor(private flashService: FlashService) {
-    this.flashs = this.flashService.flashs;
     this.flash = {
       question: '',
       answer: '',
@@ -31,10 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.flashService.flashs$
-      .subscribe(flashs => {
-        this.flashs = flashs;
-      })
+    this.flashs$ = this.flashService.flashs$;
+    
   }
 
   ngOnDestroy(): void {
