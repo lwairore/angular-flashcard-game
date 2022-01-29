@@ -13,3 +13,7 @@ The application looks as follows:
 ![This image displays how Angular Flashcard Game app looks like without any added flashcard](src/assets/demo/without-any-flashcard-added.png)
 
 Angular Flashcard Game uses observables in Angular services, `FlashService`, to make it easier to manage the state of the application. I also used immutability to improve performance by using the `OnPush` change detection strategy.
+
+# Built with
+- [Angular](https://angular.io/)
+- [Bulma](https://bulma.io/)
